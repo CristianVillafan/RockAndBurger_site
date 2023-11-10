@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block welcome %}
+    <section>
+        <div class="d-flex justify-content-center py-4" style="height: 400px;">
+            <img src="{% static 'base/images/recoger.jpg' %}" class="img-fluid mx-4" alt="">
+            <img src="{% static 'base/images/domicilio.jpg' %}" class="img-fluid mx-4" alt="">
+        </div>
+    </section>
+{% endblock %}
+{% block carousel %}{% endblock %}
+{% block gps %}{% endblock %}
