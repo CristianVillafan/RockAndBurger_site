@@ -2,9 +2,19 @@
 {% load static %}
 {% block welcome %}
     <section>
-        <div class="d-flex justify-content-center py-4" style="height: 400px;">
-            <img src="{% static 'base/images/recoger.jpg' %}" class="img-fluid mx-4" alt="">
-            <img src="{% static 'base/images/domicilio.jpg' %}" class="img-fluid mx-4" alt="">
+        <div class="d-flex justify-content-center my-4 " style="height: 400px;">
+            <div class="position-relative" style="height: 400px;">
+                <a href="" class="link-light">
+                    <img style="height: 400px;" src="{% static 'base/images/recoger.jpg' %}" class="img-fluid mx-4" alt="">
+                    <p class="position-absolute top-50 start-50 translate-middle fs-1">Pasa&nbsp;a&nbsp;recoger</p>
+                </a>
+            </div>
+            <div class="position-relative" style="height: 400px;">
+                <a href="" class="link-light">
+                    <img style="height: 400px;" src="{% static 'base/images/domicilio.jpg' %}" class="img-fluid mx-4" alt="">
+                    <p class="position-absolute top-50 start-50 translate-middle fs-1">A domicilio</p>
+                </a>
+            </div>
         </div>
     </section>
 {% endblock %}

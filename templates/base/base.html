@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'base/css/animatic.css' %}">
 </head>
-<body data-bs-theme="dark" style="background-color: black;">
+<body data-bs-theme="dark" style="background-color: black; padding-bottom: 150px;" class="position-relative min-vh-100">
     <!--Navbar-->
     {% block navbar %}
     <section>
         <nav class="navbar navbar-expand-lg" style="background-color: black;">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="{% static 'base/images/logo.png' %}" alt="" style="width: 50px;"></a>
+              <a class="navbar-brand" href="{% url 'bases:home' %}"><img src="{% static 'base/images/logo.png' %}" alt="" style="width: 50px;"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'bases:home' %}">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Ordena aqui</a>
+                    <a class="nav-link" href="{% url 'bases:pickup_delivery' %}">Ordena aqui</a>
                   </li>
                   <li class="nav-item dropstart">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +37,18 @@
                       <li><a class="dropdown-item" href="#">Direcciones</a></li>
                       <li><a class="dropdown-item" href="#">Metodos de pago</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                      {% if user.is_authenticated %}
+                      <li class="text-center">
+                        <a class="btn btn-sm btn-outline-danger" href="{% url 'bases:signout' %}">Cerrar&nbsp;sesión</a>
+                      </li>
+                      {% else %}
+                      <li class="text-center">
+                        <div class="btn-group btn-group-sm px-2" role="group" aria-label="Basic outlined example">
+                          <a type="button" class="btn btn-outline-danger" href="{% url 'bases:signup' %}">Registrarse</a>
+                          <a type="button" class="btn btn-outline-danger" href="{% url 'bases:signin' %}">Ingresar</a>
+                        </div>
+                      </li>
+                      {% endif %}
                     </ul>
                   </li>
                 </ul>
@@ -51,10 +62,16 @@
     {% block welcome %}
     <section>
         <img src="{% static 'base/images/nuevo_menu.jpg' %}" class="img-fluid" alt="">
-        <div class="d-flex justify-content-around py-4" style="background-color: black;">
-            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract" href="#Sucursales">Sucursales</a>
-            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract" href="{% url 'bases:pickup_delivery' %}">Ordena aqui</a>
-            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract" >Registrarse/Iniciar sesión</a>
+        <div class="d-flex justify-content-around py-4 d-flex flex-wrap" style="background-color: black; min-width: 400px;">
+            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract m-2" href="#Sucursales">Sucursales</a>
+            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract m-2" href="{% url 'bases:pickup_delivery' %}">Ordena aqui</a>
+            <a type="button" class="btn btn-outline-danger btn-lg tracking-in-contract m-2" href="#">Menu</a>
+            {% if not user.is_authenticated %}
+            <div class="btn-group btn-group-lg tracking-in-contract m-2" role="group" aria-label="Large button group">
+              <a type="button" href="{% url 'bases:signup' %}" class="btn btn-outline-danger">Registrarse</a>
+              <a type="button" href="{% url 'bases:signin' %}" class="btn btn-outline-danger">Ingresar</a>
+            </div>
+            {% endif %}
         </div>
     </section>
     {% endblock %}
@@ -137,7 +154,7 @@
     {% endblock %}
     <!--EndGPS-->
     <!--Footer-->
-    <section>
+    <section class="position-absolute bottom-0 start-50 translate-middle-x w-100">
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
               <p class="col-md-4 mb-0 text-muted">© 2022 Company, Inc</p>
