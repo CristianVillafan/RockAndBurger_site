@@ -34,7 +34,7 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Pedidos</a></li>
-                      <li><a class="dropdown-item" href="#">Direcciones</a></li>
+                      <li><a class="dropdown-item" href="{% url 'cmp:address_form' %}">Direcciones</a></li>
                       <li><a class="dropdown-item" href="#">Metodos de pago</a></li>
                       <li><hr class="dropdown-divider"></li>
                       {% if user.is_authenticated %}
