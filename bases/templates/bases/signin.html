@@ -10,7 +10,14 @@
                 <form method="POST" action="{% url 'bases:signin' %}" style="display: grid; place-items: center;">
                     {% csrf_token %}
                     {{error}}
-                    {{ form.as_p}}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nombre</span>
+                        <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" aria-describedby="basic-addon1" name="username" id="id_username">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                        <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" name="password" id="id_password">
+                    </div>
                     <button class="btn btn-outline-danger button_primary" type="submit">
                         Iniciar sesión
                     </button>
@@ -32,7 +39,8 @@
                     {% endif %}
                 </small>
             </div>
-            <div class="card-footer text-body-secondary">
+            <div class="card-footer text-body-secondary text-center">
+                ¿No tienes una cuenta? <a href="{% url 'bases:signup' %}" class="text-danger">Registrate ahora</a>
             </div>
         </div>
     </section>

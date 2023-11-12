@@ -2,12 +2,57 @@
 {% load static %}
 {% block welcome %}
     <section>
-        <div class="card justify-content-center mx-auto" style="width: 400px;">
-            <div class="card-header">
-              Tus direcciones
+        <div class="card justify-content-center mx-5 ">
+            <div class="card-header d-flex justify-content-between">
+              <p class="d-inline">Tus direcciones</p>
+              <div class="d-inline btn-group">
+                <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-border-width"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="m-1">Agregar direccion</li>
+                </ul>
+              </div>
             </div>
-            <div class="card-body">
-                
+            <div class="card-body table-responsive">
+                {% if not obj %}
+                <small class="text-danger" >
+                    No hay direcciones registradas
+                </small>
+                {% else %}
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Calle</th>
+                        <th scope="col">Numero exterior</th>
+                        <th scope="col">Numero interior</th>
+                        <th scope="col">Entre calle 1</th>
+                        <th scope="col">Entre calle 2</th>
+                        <th scope="col">Codigo postal</th>
+                        <th scope="col">Numero de telefono</th>
+                        <th scope="col">Comentarios</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in obj %}
+                            <tr>
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.name}}</td>
+                                <td>{{item.street}}</td>
+                                <td>{{item.outdoor_number}}</td>
+                                <td>{{item.indoor_number}}</td>
+                                <td>{{item.street2}}</td>
+                                <td>{{item.street3}}</td>
+                                <td>{{item.postal_code}}</td>
+                                <td>{{item.phone_number}}</td>
+                                <td>{{item.description}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
             </div>
             <div class="card-footer text-body-secondary">
             </div>
