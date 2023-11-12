@@ -10,7 +10,7 @@ class Address(models.Model):
     outdoor_number = models.IntegerField()
     indoor_number = models.IntegerField(null=True, blank=True)
     street2 = models.CharField(max_length=100)
-    street3 = models.CharField(max_length=100)
+    street3 = models.CharField(max_length=100, null=True, blank=True)
     postal_code = models.IntegerField()
     city = models.CharField(max_length=50,default='Veracruz')
     def __str__(self):

@@ -10,7 +10,43 @@
                 <form method="POST" action="{% url 'cmp:address_form' %}" style="display: grid; place-items: center;">
                     {% csrf_token %}
                     {{error}}
-                    {{ form.as_p }}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nombre</span>
+                        <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" aria-describedby="basic-addon1" name="name" id="id_name">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Calle</span>
+                        <input type="text" class="form-control" placeholder="calle, avenida, callejon" aria-label="Username" aria-describedby="basic-addon1" name="street" id="id_street">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                          <input type="number" class="form-control" placeholder="Numero exterior" aria-label="First name" name="outdoor_number" id="id_outdoor_number">
+                        </div>
+                        <div class="col">
+                          <input type="number" class="form-control" placeholder="Numero interior" aria-label="Last name" name="indoor_number" id="id_indoor_number">
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Entre calles</span>
+                        <input type="text" aria-label="First name" class="form-control" name="street2" id="id_street2" placeholder="Calle 1">
+                        <input type="text" aria-label="Last name" class="form-control" name="street3" id="id_street3" placeholder="Calle 2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Codigo postal</span>
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" name="postal_code" id="id_postal_code">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Ciudad</span>
+                        <input type="text" class="form-control" placeholder="calle, avenida, callejon" aria-label="Username" aria-describedby="basic-addon1" name="city" id="id_city">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Numero de telefono</span>
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" name="phone_number" id="id_phone_number">
+                    </div>
+                    <div class="form-floating mb-3 w-100">
+                        <textarea name="description" id="id_description" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px;"></textarea>
+                        <label for="floatingTextarea2">Comentarios</label>
+                    </div>
                     <button class="btn btn-outline-danger button_primary" type="submit">
                         Guardar
                     </button>
