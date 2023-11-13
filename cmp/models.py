@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Address(models.Model):
@@ -13,6 +14,7 @@ class Address(models.Model):
     street3 = models.CharField(max_length=100, null=True, blank=True)
     postal_code = models.IntegerField()
     city = models.CharField(max_length=50,default='Veracruz')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return '{}'.format(self.name)
     def save(self):
